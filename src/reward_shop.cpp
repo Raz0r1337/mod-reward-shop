@@ -38,13 +38,13 @@ public:
         if (!sConfigMgr->GetOption<bool>("RewardShopEnable", 0))
             return false;
 
-        std::string text = "Enter code and press accept";
-        AddGossipItemFor(player, GOSSIP_ICON_CHAT, "I'd like to redeem my code.", GOSSIP_SENDER_MAIN, 1, text, 0, true);
-        AddGossipItemFor(player, GOSSIP_ICON_CHAT, "How do i get a code?", GOSSIP_SENDER_MAIN, 2);
-        AddGossipItemFor(player, GOSSIP_ICON_CHAT, "I dont have a code.", GOSSIP_SENDER_MAIN, 3);
+        std::string text = "Gib deinen Code ein und drücke auf annehmen";
+        AddGossipItemFor(player, GOSSIP_ICON_CHAT, "Ich möchte einen Code einlösen.", GOSSIP_SENDER_MAIN, 1, text, 0, true);
+        AddGossipItemFor(player, GOSSIP_ICON_CHAT, "Woher bekomme ich einen Code?", GOSSIP_SENDER_MAIN, 2);
+        AddGossipItemFor(player, GOSSIP_ICON_CHAT, "Ich habe keinen Code.", GOSSIP_SENDER_MAIN, 3);
 
         if (sConfigMgr->GetOption<bool>("AllowGM", 1) && player->IsGameMaster())
-            AddGossipItemFor(player, GOSSIP_ICON_BATTLE, "[GM] I would like generate a code.", GOSSIP_SENDER_MAIN, 4);
+            AddGossipItemFor(player, GOSSIP_ICON_BATTLE, "[GM] Ich möchte einen Code generieren.", GOSSIP_SENDER_MAIN, 4);
 
         SendGossipMenuFor(player, DEFAULT_GOSSIP_MESSAGE, creature->GetGUID());
         return true;
@@ -53,7 +53,7 @@ public:
     bool OnGossipSelect(Player *player, Creature *creature, uint32 /* sender */, uint32 action) override
     {
         player->PlayerTalkClass->ClearMenus();
-        std::string info = sConfigMgr->GetOption<std::string>("WebsiteAddress", "You can get codes by visiting the online store at (website address)");
+        std::string info = sConfigMgr->GetOption<std::string>("WebsiteAddress", "Du kannst Codes bei besonderen Events bekommen.");
         uint32 rnd1 = urand(10000, 90000);
         uint32 rnd2 = urand(10000, 90000);
         uint32 rnd3 = urand(10000, 90000);
@@ -75,22 +75,22 @@ public:
             break;
         case 4:
             player->PlayerTalkClass->ClearMenus();
-            AddGossipItemFor(player, GOSSIP_ICON_CHAT, "I'd like to generate a name change code.", GOSSIP_SENDER_MAIN, 6);
-            AddGossipItemFor(player, GOSSIP_ICON_CHAT, "I'd like to generate a faction change code.", GOSSIP_SENDER_MAIN, 7);
-            AddGossipItemFor(player, GOSSIP_ICON_CHAT, "I'd like to generate a race change code.", GOSSIP_SENDER_MAIN, 8);
+            AddGossipItemFor(player, GOSSIP_ICON_CHAT, "Ich möchte einen Namensänderungs-Code generieren.", GOSSIP_SENDER_MAIN, 6);
+            AddGossipItemFor(player, GOSSIP_ICON_CHAT, "Ich möchte einen Fraktionsänderungs-Code generieren.", GOSSIP_SENDER_MAIN, 7);
+            AddGossipItemFor(player, GOSSIP_ICON_CHAT, "Ich möchte einen Rassenänderungs-Code generieren.", GOSSIP_SENDER_MAIN, 8);
             SendGossipMenuFor(player, DEFAULT_GOSSIP_MESSAGE, creature->GetGUID());
             break;
         case 6:
             CharacterDatabase.Query("INSERT INTO `reward_shop` (`action`, `action_data`, `quantity`, `code`, `status`, `PlayerGUID`, `PlayerIP`, `CreatedBy`) VALUES(3, 0, 0, '{}', 0, 0, '0', '{}')", randomcode.str().c_str(), CreatedBy.c_str());
-            ChatHandler(player->GetSession()).PSendSysMessage("Code was successfully created your code is {}", randomcode.str());
+            ChatHandler(player->GetSession()).PSendSysMessage("Der Code wurde erfolgreich generiert: {}", randomcode.str());
             break;
         case 7:
             CharacterDatabase.Query("INSERT INTO `reward_shop` (`action`, `action_data`, `quantity`, `code`, `status`, `PlayerGUID`, `PlayerIP`,`CreatedBy`) VALUES(4, 0, 0, '{}', 0, 0, '0', '{}')", randomcode.str().c_str(), CreatedBy.c_str());
-            ChatHandler(player->GetSession()).PSendSysMessage("Code was successfully created your code is {}", randomcode.str());
+            ChatHandler(player->GetSession()).PSendSysMessage("Der Code wurde erfolgreich generiert: {}", randomcode.str());
             break;
         case 8:
             CharacterDatabase.Query("INSERT INTO `reward_shop` (`action`, `action_data`, `quantity`, `code`, `status`, `PlayerGUID`, `PlayerIP`, `CreatedBy`) VALUES(5, 0, 0, '{}', 0, 0, '0', '{}')", randomcode.str().c_str(), CreatedBy.c_str());
-            ChatHandler(player->GetSession()).PSendSysMessage("Code was successfully created your code is {}", randomcode.str());
+            ChatHandler(player->GetSession()).PSendSysMessage("Der Code wurde erfolgreich generiert: {}", randomcode.str());
             break;
         }
         return true;
@@ -102,7 +102,7 @@ public:
         std::string playerIP = player->GetSession()->GetRemoteAddress();
         std::string rewardcode = code;
         std::ostringstream messageCode;
-        messageCode << "Sorry " << player->GetName() << ", that is not a valid code or has already been redeemed.";
+        messageCode << "Tut mir leid " << player->GetName() << ", aber das ist kein gültiger Code oder er wurde bereits eingelöst.";
 
         std::size_t found = rewardcode.find_first_not_of("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890-");
 
@@ -114,7 +114,7 @@ public:
 
         if (!result)
         {
-            player->PlayDirectSound(9638); // No
+            //player->PlayDirectSound(9638); // No
             creature->Whisper(messageCode.str().c_str(), LANG_UNIVERSAL, player);
             creature->HandleEmoteCommand(EMOTE_ONESHOT_QUESTION);
             SendGossipMenuFor(player, DEFAULT_GOSSIP_MESSAGE, creature->GetGUID());
@@ -137,7 +137,7 @@ public:
 
             if (status == 1)
             {
-                player->PlayDirectSound(9638); // No
+                //player->PlayDirectSound(9638); // No
                 creature->Whisper(messageCode.str().c_str(), LANG_UNIVERSAL, player);
                 creature->HandleEmoteCommand(EMOTE_ONESHOT_QUESTION);
                 SendGossipMenuFor(player, DEFAULT_GOSSIP_MESSAGE, creature->GetGUID());
@@ -152,7 +152,7 @@ public:
 
                 if (count == 0 || dest.empty())
                 {
-                    ChatHandler(player->GetSession()).PSendSysMessage("Can not create item either item is unique or you do not have any space");
+                    ChatHandler(player->GetSession()).PSendSysMessage("Das Item kann nicht erstellt werden, entweder ist es einzigartig (Unique) oder du hast keinen freien Platz im Inventar.");
                     ChatHandler(player->GetSession()).SetSentErrorMessage(true);
                     return false;
                 }
@@ -162,19 +162,19 @@ public:
                 break;
             case 2: /* Gold */
                 player->ModifyMoney(action_data * 10000);
-                ChatHandler(player->GetSession()).PSendSysMessage("CHAT OUTPUT: Successfully added [{} G]", action_data);
+                ChatHandler(player->GetSession()).PSendSysMessage("Erfolgreich hinzugefügt [{} Gold]", action_data);
                 break;
             case 3: /* Name Change */
                 player->SetAtLoginFlag(AT_LOGIN_RENAME);
-                ChatHandler(player->GetSession()).PSendSysMessage("CHAT OUTPUT: Please log out for name change.");
+                ChatHandler(player->GetSession()).PSendSysMessage("Bitte ausloggen um mit der Namensänderung zu beginnen.");
                 break;
             case 4: /* Faction Change */
                 player->SetAtLoginFlag(AT_LOGIN_CHANGE_FACTION);
-                ChatHandler(player->GetSession()).PSendSysMessage("CHAT OUTPUT: Please log out for faction change.");
+                ChatHandler(player->GetSession()).PSendSysMessage("Bitte ausloggen um mit der Fraktionsänderung zu beginnen.");
                 break;
             case 5: /* Race Change */
                 player->SetAtLoginFlag(AT_LOGIN_CHANGE_RACE);
-                ChatHandler(player->GetSession()).PSendSysMessage("CHAT OUTPUT: Please log out for race change.");
+                ChatHandler(player->GetSession()).PSendSysMessage("Bitte ausloggen um mit der Rassenänderung zu beginnen.");
                 break;
             case 6: /* Level Up */
                 if (player->GetLevel() < 80) {
@@ -183,10 +183,10 @@ public:
                     player->SetUInt32Value(PLAYER_NEXT_LEVEL_XP, 0);
                     player->SetUInt32Value(PLAYER_FIELD_MAX_LEVEL, 80);
                     player->UpdateSkillsToMaxSkillsForLevel();
-                    ChatHandler(player->GetSession()).PSendSysMessage("CHAT OUTPUT: You´ve reached level 80.");
+                    ChatHandler(player->GetSession()).PSendSysMessage("CHAT OUTPUT: Du hast Level 80 erreicht.");
                 }
                 else
-                    ChatHandler(player->GetSession()).PSendSysMessage("CHAT OUTPUT: You´re already level 80.");
+                    ChatHandler(player->GetSession()).PSendSysMessage("CHAT OUTPUT: Du bist bereits Level 80.");
                 break;
             }
 
@@ -222,7 +222,7 @@ public:
             {
                 if (canSay)
                 {
-                    me->Say("Do you have a code to redeem? Step right up!", LANG_UNIVERSAL);
+                    me->Say("Hast du einen Code zum einlösen? Dann komm näher!", LANG_UNIVERSAL);
                     me->HandleEmoteCommand(EMOTE_ONESHOT_EXCLAMATION);
                     say_timer = 61000;
                 }
