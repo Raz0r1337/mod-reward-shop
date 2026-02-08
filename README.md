@@ -1,52 +1,49 @@
 # ![logo](https://raw.githubusercontent.com/azerothcore/azerothcore.github.io/master/images/logo-github.png) AzerothCore
-## Ingame Reward System
+## Ingame Belohnungssystem 
 
-This is a module for [AzerothCore](http://www.azerothcore.org)
+Belohnungssystem  [AzerothCore](http://www.azerothcore.org)
 
-- Latest build status with azerothcore: [![Build Status](https://github.com/azerothcore/mod-reward-shop/workflows/core-build/badge.svg?branch=master&event=push)](https://github.com/azerothcore/mod-reward-shop)
+- Aktueller Build-Status mit azerothcore: [![Build Status](https://github.com/azerothcore/mod-reward-shop/workflows/core-build/badge.svg?branch=master&event=push)](https://github.com/azerothcore/mod-reward-shop)
 
-Current features:
+Aktuelle Funktionen:
 
-- This Module Makes a NPC do database check for a code that can redeemed ingame, The NPC checks which action is called in the Database to apply the correct items/features
+- Dieses Modul veranlasst einen NPC, eine Datenbankprüfung für einen Code durchzuführen, der im Spiel eingelöst werden kann. Der NPC überprüft, welche Aktion in der Datenbank aufgerufen wird, um die richtigen Gegenstände/Funktionen anzuwenden.
 
-Database Actions:
+Datenbankaktionen:
 
-1 = item
-2 = gold
-3 = name change
-4 = faction change
-5 = race change
+1 = Item
+2 = Gold
+3 = Namensänderung
+4 = Faktionsänderung
+5 = Rassenänderung
 
-Upcoming features:
-### 1) If a person feels like they could make a website to work with this module it will be great i will merge into the source and also give credit.
+Kommende Funktionen:
+### 1) Wenn jemand glaubt, dass er eine Website erstellen könnte, die mit diesem Modul funktioniert, wäre das großartig. Ich werde sie in den Quellcode integrieren und auch die Urheberschaft angeben.
 
 
 ## Requirements
 
-Reward Shop module currently requires:
+Das Reward Shop-Modul erfordert derzeit:
 
 AzerothCore v1.0.1+
 
 ## How to install
 
-### 1) Simply place the module under the `modules` folder of your AzerothCore source folder.
+### 1) Legen Sie das Modul einfach im Ordner „modules” Ihres AzerothCore-Quellordners ab.
 
-### 2) Input the SQL file to the character database.
+### 2) Geben Sie die SQL-Datei in die Charakterdatenbank ein.
 
-### 3) Re-run cmake and launch a clean build of AzerothCore
+### 2a) Optional können Sie alle AC-Code-NPCs austauschen: Geben Sie die SQL-Dateien aus dem optionalen Ordner in die Weltdatenbank ein. Verwenden Sie zuerst die NPC.sql-Dateien und dann die Spawn.sql-Dateien.
 
-**That's it.**
+### 3) Führen Sie cmake erneut aus und starten Sie einen sauberen Build von AzerothCore.
 
-### (Optional) Edit module configuration
+**Das ist alles.**
 
-If you need to change the module configuration, go to your server configuration folder (e.g. **etc**), copy `reward_shop.conf.dist` to `reward_shop.conf` and edit it as you prefer.
+### (Optional) Modulkonfiguration bearbeiten
 
-# Show your appreciation
+Wenn Sie die Modulkonfiguration ändern müssen, gehen Sie zu Ihrem Serverkonfigurationsordner (z. B. **etc**), kopieren Sie `reward_shop.conf.dist` nach `reward_shop.conf` und bearbeiten Sie die Datei nach Ihren Wünschen.
+
+# Zeigen Sie Ihre Wertschätzung
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=SBJFTAJKUNEXC)
-
-
-
-
-
 
 
