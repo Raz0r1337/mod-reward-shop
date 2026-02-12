@@ -7,6 +7,7 @@ Database Actions:
 3 = name change
 4 = faction change
 5 = race change
+6 = level up to 80
 
 script made by talamortis
 
@@ -78,6 +79,7 @@ public:
             AddGossipItemFor(player, GOSSIP_ICON_CHAT, "Ich möchte einen Namensänderungs-Code generieren.", GOSSIP_SENDER_MAIN, 6);
             AddGossipItemFor(player, GOSSIP_ICON_CHAT, "Ich möchte einen Fraktionsänderungs-Code generieren.", GOSSIP_SENDER_MAIN, 7);
             AddGossipItemFor(player, GOSSIP_ICON_CHAT, "Ich möchte einen Rassenänderungs-Code generieren.", GOSSIP_SENDER_MAIN, 8);
+            AddGossipItemFor(player, GOSSIP_ICON_CHAT, "Ich möchte einen MAX-Level-Code generieren.", GOSSIP_SENDER_MAIN, 9);
             SendGossipMenuFor(player, DEFAULT_GOSSIP_MESSAGE, creature->GetGUID());
             break;
         case 6:
@@ -90,6 +92,10 @@ public:
             break;
         case 8:
             CharacterDatabase.Query("INSERT INTO `reward_shop` (`action`, `action_data`, `quantity`, `code`, `status`, `PlayerGUID`, `PlayerIP`, `CreatedBy`) VALUES(5, 0, 0, '{}', 0, 0, '0', '{}')", randomcode.str().c_str(), CreatedBy.c_str());
+            ChatHandler(player->GetSession()).PSendSysMessage("Der Code wurde erfolgreich generiert: {}", randomcode.str());
+            break;
+        case 9:
+            CharacterDatabase.Query("INSERT INTO `reward_shop` (`action`, `action_data`, `quantity`, `code`, `status`, `PlayerGUID`, `PlayerIP`, `CreatedBy`) VALUES(6, 0, 0, '{}', 0, 0, '0', '{}')", randomcode.str().c_str(), CreatedBy.c_str());
             ChatHandler(player->GetSession()).PSendSysMessage("Der Code wurde erfolgreich generiert: {}", randomcode.str());
             break;
         }
