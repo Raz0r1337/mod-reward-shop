@@ -34,7 +34,7 @@ AzerothCore v1.0.1+
 
 ### 2) Geben Sie die SQL-Datei in die Charakterdatenbank ein.
 
-### 2a) Optional können Sie alle AC-Code-NPCs austauschen: Geben Sie die SQL-Dateien aus dem optionalen Ordner in die Weltdatenbank ein. Verwenden Sie zuerst die NPC.sql-Dateien und dann die Spawn.sql-Dateien.
+### 2a) Optional können Sie alle AC-Code-NPCs austauschen: Geben Sie die SQL-Dateien aus dem optionalen Ordner in die Weltdatenbank ein. Verwenden Sie zuerst die NPC.sql-Dateien und dann die Spawn.sql-Datei.
 
 ### 3) Führen Sie cmake erneut aus und starten Sie einen sauberen Build von AzerothCore.
 
