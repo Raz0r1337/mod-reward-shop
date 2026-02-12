@@ -158,7 +158,7 @@ public:
 
                 if (count == 0 || dest.empty())
                 {
-                    ChatHandler(player->GetSession()).PSendSysMessage("Das Item kann nicht erstellt werden, entweder ist es einzigartig (Unique) oder du hast keinen freien Platz im Inventar.");
+                    ChatHandler(player->GetSession()).PSendSysMessage("Das Item kann nicht hinzugefügt werden, entweder du hast keinen freien Platz im Inventar oder du hast es bereits in deinem Besitz.;
                     ChatHandler(player->GetSession()).SetSentErrorMessage(true);
                     return false;
                 }
