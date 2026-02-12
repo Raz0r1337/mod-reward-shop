@@ -16,6 +16,7 @@ Datenbankaktionen:
 3 = Namensänderung
 4 = Faktionsänderung
 5 = Rassenänderung
+6 = Level Up auf 80
 
 Kommende Funktionen:
 ### 1) Wenn jemand glaubt, dass er eine Website erstellen könnte, die mit diesem Modul funktioniert, wäre das großartig. Ich werde sie in den Quellcode integrieren und auch die Urheberschaft angeben.
