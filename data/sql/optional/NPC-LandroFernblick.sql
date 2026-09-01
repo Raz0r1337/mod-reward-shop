@@ -2,10 +2,10 @@
 --	CODEBOX - 90024
 -- ######################################################--
 SET
-@Entry 		:= 92001,
-@Model 		:= 25901,
-@Name 		:= "Ian Drake",
-@Title 		:= "Ältester",
+@Entry 		:= 92006,
+@Model 		:= 16941,
+@Name 		:= "Landro Fernblick",
+@Title 		:= "Die Schwarze Flamme",
 @Icon 		:= "Buy",
 @GossipMenu := 0,
 @MinLevel 	:= 80,

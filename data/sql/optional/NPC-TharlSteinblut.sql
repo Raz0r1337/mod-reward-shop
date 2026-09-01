@@ -2,10 +2,10 @@
 --	CODEBOX - 90024
 -- ######################################################--
 SET
-@Entry 		:= 92001,
-@Model 		:= 25901,
-@Name 		:= "Ian Drake",
-@Title 		:= "Ältester",
+@Entry 		:= 92005,
+@Model 		:= 15988,
+@Name 		:= "Tharl Steinblut",
+@Title 		:= "",
 @Icon 		:= "Buy",
 @GossipMenu := 0,
 @MinLevel 	:= 80,
