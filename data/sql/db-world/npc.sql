@@ -5,7 +5,7 @@ SET
 @Entry 		:= 92000,
 @Model 		:= 16804, -- Elven Jeweler
 @Name 		:= "Talamortis",
-@Title 		:= "Code exchange",
+@Title 		:= "Codeaustausch",
 @Icon 		:= "Buy",
 @GossipMenu := 0,
 @MinLevel 	:= 80,
@@ -31,7 +31,7 @@ INSERT INTO `creature_template_model` (`CreatureID`, `Idx`, `CreatureDisplayID`,
 
 -- NPC Text
 DELETE FROM `npc_text` WHERE `ID`=@Entry;
-INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Greetings $N. Do you have a code to redeem?');
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Hallo $N. Hast du einen Code zum Einlösen?');
 
 -- creatture_template_movement
 DELETE FROM `creature_template_movement` WHERE `CreatureId` IN (@Entry);
