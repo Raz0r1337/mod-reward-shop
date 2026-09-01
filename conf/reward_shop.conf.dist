@@ -13,7 +13,7 @@ RewardShopEnable = 1
 #        Description: This is what the NPC say's when a player clicks "How do i get a code?"
 #        Default:     "You can get codes by visiting the online store at (Website Here)"
 
-WebsiteAddress = "You can get codes by visiting the online store at: www.wildhammer.co.uk"
+WebsiteAddress = "Sie können Codes erhalten, indem Sie den Online-Shop unter (Website hier) besuchen."
 
 #
 #    AllowGM
